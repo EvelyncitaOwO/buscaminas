@@ -4,16 +4,42 @@ import java.util.Scanner;
 
 public class Buscaminas {
 
-    private int rows=9;
-    private int cols=9;
-    private String[][] tauler=new String[rows][cols];
-    private int[][] tauler2=new int[rows][cols];
-    private int minas=15;
+    private int rows;
+    private int cols;
+    private String[][] tauler;
+    private int[][] tauler2;
+    private int minas;
     private boolean acabat=false;
-    private int CasellesGirades=0;
-    private int CasellesTotals=(rows*cols)-minas;
+    private int CasellesGirades;
+    private int CasellesTotals;
+    private Scanner leer = new Scanner(System.in);
 
     public void initBuscaminas(){
+
+        System.out.println("Seleccione el numero de filas (1-9)");
+        rows= leer.nextInt();
+        if (rows<1|rows>9){
+            System.out.println("error");
+            initBuscaminas();
+        }
+
+        System.out.println("Seleccione el numero de columnas (1-9)");
+        cols= leer.nextInt();
+        if (cols<1|cols>9){
+            System.out.println("error");
+            initBuscaminas();
+        }
+
+        System.out.println("Seleccione el numero de minas");
+        minas= leer.nextInt();
+        if (minas<=0|minas>=(rows*cols)){
+            System.out.println("error");
+            initBuscaminas();
+        }
+        tauler=new String[rows][cols];
+        tauler2=new int[rows][cols];
+        CasellesTotals=(rows*cols)-minas;
+
         CrearTauler();
         ColocarMinas();
         CalcularNumero();
@@ -140,7 +166,6 @@ public class Buscaminas {
 
             System.out.println(error);
             error="";
-            Scanner leer = new Scanner(System.in);
 
             System.out.println("Introduzca la posición x:");
             int x = leer.nextInt();
