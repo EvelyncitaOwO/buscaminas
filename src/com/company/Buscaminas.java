@@ -8,7 +8,7 @@ public class Buscaminas {
     private int cols=9;
     private String[][] tauler=new String[rows][cols];
     private int[][] tauler2=new int[rows][cols];
-    private int minas=20;
+    private int minas=15;
     private boolean acabat=false;
     private int CasellesGirades=0;
     private int CasellesTotals=(rows*cols)-minas;
@@ -17,7 +17,6 @@ public class Buscaminas {
         CrearTauler();
         ColocarMinas();
         CalcularNumero();
-        DibuixarTauler();
         Jugar();
     }
 
@@ -73,6 +72,11 @@ public class Buscaminas {
         }
         System.out.println("|");
         System.out.println();
+
+        System.out.println("Minas: "+minas);
+        System.out.println("Casillas restantes: "+(CasellesTotals-CasellesGirades));
+
+
     }
 
     public void ColocarMinas(){
@@ -165,6 +169,7 @@ public class Buscaminas {
                 tauler[y][x]= "X";
                 acabat=true;
                 DibuixarTauler();
+                System.out.print("\033[31m"+"Derrota"+"\u001B[0m");
             }
             if (tauler2[y][x]==0){
                 Desbloquear(x,y);
@@ -204,7 +209,7 @@ public class Buscaminas {
     public void ComprovarGuanyar(){
         if (CasellesGirades>=CasellesTotals){
             DibuixarTauler();
-            System.out.println("Victoria");
+            System.out.print("\033[32m"+"Victoria"+"\u001B[0m");
             acabat=true;
         }
     }
