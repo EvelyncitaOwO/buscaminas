@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Buscaminas {
@@ -12,7 +13,7 @@ public class Buscaminas {
     private boolean acabat=false;
     private int CasellesGirades;
     private int CasellesTotals;
-    private Scanner leer = new Scanner(System.in);
+    private final Scanner leer = new Scanner(System.in);
 
     public void initBuscaminas(){
 
@@ -30,7 +31,7 @@ public class Buscaminas {
             initBuscaminas();
         }
 
-        System.out.println("Seleccione el numero de minas");
+        System.out.println("Seleccione el numero de minas (menor al numero de casillas)");
         minas= leer.nextInt();
         if (minas<=0|minas>=(rows*cols)){
             System.out.println("error");
@@ -175,7 +176,7 @@ public class Buscaminas {
             y=rows-y;
 
             if (0<=x && x<cols && 0<=y && y<rows){
-                if (tauler[y][x]==" "){
+                if (Objects.equals(tauler[y][x], " ")){
                     Girar(x,y);
                 }
             }else{
@@ -186,7 +187,7 @@ public class Buscaminas {
 
     public void Girar(int x, int y){
 
-        if (tauler[y][x]==" "){
+        if (Objects.equals(tauler[y][x], " ")){
             if (tauler2[y][x]!=-1){
                 tauler[y][x]=String.valueOf(tauler2[y][x]);
                 CasellesGirades++;
