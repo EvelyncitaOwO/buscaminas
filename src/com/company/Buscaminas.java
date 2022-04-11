@@ -192,8 +192,18 @@ public class Buscaminas {
                 tauler[y][x]=String.valueOf(tauler2[y][x]);
                 CasellesGirades++;
             }else{
-                tauler[y][x]= "X";
-                acabat=true;
+
+                for (int i = 0; i < rows; i++) {
+                    for (int j = 0; j < cols; j++) {
+                        if (tauler2[i][j]==-1){
+                            tauler[i][j]= "X";
+                            acabat=true;
+                        }
+                    }
+                }
+
+                //tauler[y][x]= "X";
+                //acabat=true;
                 DibuixarTauler();
                 System.out.print("\033[31m"+"Derrota"+"\u001B[0m");
             }
