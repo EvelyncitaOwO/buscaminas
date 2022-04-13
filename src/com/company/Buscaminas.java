@@ -20,21 +20,21 @@ public class Buscaminas {
         System.out.println("Seleccione el numero de filas (1-9)");
         rows= leer.nextInt();
         if (rows<1|rows>9){
-            System.out.println("error");
+            System.out.println("\033[31m"+"Error, el valor introducido no esta en el rango"+"\u001B[0m");
             initBuscaminas();
         }
 
         System.out.println("Seleccione el numero de columnas (1-9)");
         cols= leer.nextInt();
         if (cols<1|cols>9){
-            System.out.println("error");
+            System.out.println("\033[31m"+"Error, el valor introducido no esta en el rango"+"\u001B[0m");
             initBuscaminas();
         }
 
         System.out.println("Seleccione el numero de minas (menor al numero de casillas)");
         minas= leer.nextInt();
         if (minas<=0|minas>=(rows*cols)){
-            System.out.println("error");
+            System.out.println("\033[31m"+"Error, el valor introducido no esta en el rango"+"\u001B[0m");
             initBuscaminas();
         }
         tauler=new String[rows][cols];
