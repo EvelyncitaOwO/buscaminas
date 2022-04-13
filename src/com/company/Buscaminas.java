@@ -180,7 +180,7 @@ public class Buscaminas {
                     Girar(x,y);
                 }
             }else{
-                error="Error, seleccione una casilla válida";
+                error="\033[31m"+"Error, seleccione una casilla válida"+"\u001B[0m";
             }
         }
     }
@@ -201,9 +201,6 @@ public class Buscaminas {
                         }
                     }
                 }
-
-                //tauler[y][x]= "X";
-                //acabat=true;
                 DibuixarTauler();
                 System.out.print("\033[31m"+"Derrota"+"\u001B[0m");
             }
